@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Giới thiệu bản thân</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f9fc;
+            color: #243044;
+            line-height: 1.7;
+        }
+
+        /* THANH MENU */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.97);
+            border-bottom: 1px solid #e8edf3;
+
+            padding: 15px 8%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: bold;
+            color: #244a76;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #475467;
+            margin-left: 25px;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #2f80ed;
+        }
+
+        /* PHẦN GIỚI THIỆU ĐẦU TRANG */
+        .hero {
+            min-height: 76vh;
+
+            padding: 80px 8%;
+
+            display: flex;
+            align-items: center;
+
+            background: linear-gradient(
+                135deg,
+                #244a76,
+                #3f78a8
+            );
+
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .badge {
+            display: inline-block;
+
+            background: rgba(255,255,255,0.15);
+
+            padding: 7px 15px;
+
+            border-radius: 30px;
+
+            font-size: 13px;
+
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 7vw, 72px);
+
+            line-height: 1.08;
+
+            margin-bottom: 18px;
+        }
+
+        .hero p {
+            font-size: 19px;
+
+            color: #edf5fc;
+
+            max-width: 680px;
+        }
+
+        .button {
+            display: inline-block;
+
+            margin-top: 28px;
+
+            background: white;
+
+            color: #244a76;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            padding: 12px 21px;
+
+            border-radius: 10px;
+        }
+
+        /* CÁC SECTION */
+        section {
+            max-width: 1050px;
+
+            margin: auto;
+
+            padding: 75px 24px;
+        }
+
+        .section-title {
+            text-align: center;
+
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 34px;
+
+            color: #244a76;
+
+            margin-bottom: 8px;
+        }
+
+        .section-title p {
+            color: #667085;
+        }
+
+        /* GIỚI THIỆU */
+        .about {
+            background: white;
+
+            border-radius: 22px;
+
+            padding: 38px;
+
+            box-shadow: 0 12px 35px rgba(36,74,118,0.09);
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 35px;
+        }
+
+        .about h3 {
+            color: #244a76;
+
+            font-size: 25px;
+
+            margin-bottom: 12px;
+        }
+
+        .information {
+            display: grid;
+
+            gap: 13px;
+        }
+
+        .information div {
+            padding: 15px 18px;
+
+            background: #f4f7fb;
+
+            border-radius: 12px;
+        }
+
+        .information strong {
+            color: #244a76;
+        }
+
+        .quote {
+            margin-top: 25px;
+
+            background: #edf5fc;
+
+            padding: 22px;
+
+            border-radius: 14px;
+
+            text-align: center;
+
+            color: #244a76;
+
+            font-weight: bold;
+        }
+
+        /* SỞ THÍCH */
+        .cards {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 22px;
+        }
+
+        .card {
+            background: white;
+
+            border-radius: 18px;
+
+            padding: 28px;
+
+            box-shadow: 0 12px 35px rgba(36,74,118,0.08);
+
+            border: 1px solid #edf1f6;
+
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+        }
+
+        .icon {
+            font-size: 34px;
+
+            margin-bottom: 12px;
+        }
+
+        .card h3 {
+            color: #244a76;
+
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            color: #667085;
+
+            font-size: 15px;
+        }
+
+        /* MỤC TIÊU */
+        .timeline {
+            background: white;
+
+            border-radius: 22px;
+
+            padding: 35px;
+
+            box-shadow: 0 12px 35px rgba(36,74,118,0.08);
+        }
+
+        .timeline-item {
+            border-left: 3px solid #3f78a8;
+
+            padding: 3px 0 24px 22px;
+
+            margin-left: 8px;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-item h3 {
+            color: #244a76;
+
+            margin-bottom: 5px;
+        }
+
+        /* LIÊN HỆ */
+        .contact {
+            background: #244a76;
+
+            color: white;
+
+            text-align: center;
+
+            border-radius: 22px;
+
+            padding: 45px;
+        }
+
+        .contact h2 {
+            font-size: 32px;
+
+            margin-bottom: 10px;
+        }
+
+        .contact p {
+            color: #e4eef7;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+
+            background: #193756;
+
+            color: #dce8f2;
+
+            padding: 28px;
+
+            font-size: 14px;
+        }
+
+        /* ĐIỆN THOẠI */
+        @media (max-width: 800px) {
+
+            nav div:last-child {
+                display: none;
+            }
+
+            .about,
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 55px 18px;
+            }
+
+            .hero {
+                padding: 65px 7%;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- THANH MENU -->
+    <nav>
+
+        <div class="logo">
+            MY PROFILE
+        </div>
+
+        <div>
+            <a href="#gioi-thieu">
+                Giới thiệu
+            </a>
+
+            <a href="#so-thich">
+                Sở thích
+            </a>
+
+            <a href="#muc-tieu">
+                Mục tiêu
+            </a>
+
+            <a href="#lien-he">
+                Liên hệ
+            </a>
+        </div>
+
+    </nav>
+
+
+    <!-- TRANG ĐẦU -->
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <span class="badge">
+                PERSONAL INTRODUCTION
+            </span>
+
+            <h1>
+                Xin chào!<br>
+                Tôi là một sinh viên<br>
+                Thương mại điện tử.
+            </h1>
+
+            <p>
+                Chào mừng bạn đến với trang web giới thiệu
+                bản thân của tôi. Đây là nơi tôi chia sẻ một
+                chút về bản thân, sở thích, định hướng học tập
+                và mục tiêu nghề nghiệp trong tương lai.
+            </p>
+
+            <a href="#gioi-thieu" class="button">
+                Tìm hiểu về tôi ↓
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- GIỚI THIỆU -->
+    <section id="gioi-thieu">
+
+        <div class="section-title">
+
+            <h2>
+                Giới thiệu về tôi
+            </h2>
+
+            <p>
+                Một vài thông tin cơ bản về bản thân
+            </p>
+
+        </div>
+
+
+        <div class="about">
+
+            <div>
+
+                <h3>
+                    Một chút về tôi
+                </h3>
+
+                <p>
+                    Tôi hiện là sinh viên năm 3 ngành
+                    Thương mại điện tử tại Đại học Phenikaa.
+                    Trong quá trình học tập, tôi quan tâm đến
+                    kinh doanh trực tuyến, marketing số và
+                    cách công nghệ có thể tạo ra những trải
+                    nghiệm tốt hơn cho khách hàng.
+                </p>
+
+                <div class="quote">
+
+                    “Học hỏi mỗi ngày để trở thành
+                    phiên bản tốt hơn của chính mình.”
+
+                </div>
+
+            </div>
+
+
+            <div class="information">
+
+                <div>
+                    <strong>🎓 Ngành học:</strong>
+                    Thương mại điện tử
+                </div>
+
+                <div>
+                    <strong>🏫 Trường:</strong>
+                    Đại học Phenikaa
+                </div>
+
+                <div>
+                    <strong>📚 Năm học:</strong>
+                    Năm 3
+                </div>
+
+                <div>
+                    <strong>💼 Quan tâm:</strong>
+                    Digital Marketing & E-commerce
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SỞ THÍCH -->
+    <section id="so-thich">
+
+        <div class="section-title">
+
+            <h2>
+                Sở thích & điểm quan tâm
+            </h2>
+
+            <p>
+                Những điều tôi quan tâm trong học tập
+                và cuộc sống
+            </p>
+
+        </div>
+
+
+        <div class="cards">
+
+
+            <div class="card">
+
+                <div class="icon">
+                    💻
+                </div>
+
+                <h3>
+                    Công nghệ
+                </h3>
+
+                <p>
+                    Tôi thích tìm hiểu các công cụ và
+                    xu hướng công nghệ có thể ứng dụng
+                    trong học tập và công việc.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">
+                    📱
+                </div>
+
+                <h3>
+                    Marketing số
+                </h3>
+
+                <p>
+                    Tôi quan tâm đến nội dung số,
+                    mạng xã hội, quảng cáo và cách
+                    thương hiệu tiếp cận khách hàng.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">
+                    🛒
+                </div>
+
+                <h3>
+                    Thương mại điện tử
+                </h3>
+
+                <p>
+                    Tôi muốn khám phá hoạt động của
+                    các sàn thương mại điện tử và
+                    trải nghiệm mua sắm trực tuyến.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- MỤC TIÊU -->
+    <section id="muc-tieu">
+
+        <div class="section-title">
+
+            <h2>
+                Mục tiêu tương lai
+            </h2>
+
+            <p>
+                Định hướng học tập và nghề nghiệp của tôi
+            </p>
+
+        </div>
+
+
+        <div class="timeline">
+
+
+            <div class="timeline-item">
+
+                <h3>
+                    01. Hiện tại — Học tập
+                </h3>
+
+                <p>
+                    Tích lũy kiến thức về thương mại điện tử,
+                    marketing, phân tích dữ liệu và các kỹ năng
+                    công nghệ.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <h3>
+                    02. Tiếp theo — Phát triển kỹ năng
+                </h3>
+
+                <p>
+                    Rèn luyện kỹ năng thực hành, giao tiếp,
+                    làm việc nhóm và xây dựng kinh nghiệm
+                    thông qua các dự án thực tế.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <h3>
+                    03. Tương lai — Nghề nghiệp
+                </h3>
+
+                <p>
+                    Hướng tới công việc trong lĩnh vực
+                    Digital Marketing hoặc quản lý sàn
+                    thương mại điện tử.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- LIÊN HỆ -->
+    <section id="lien-he">
+
+        <div class="contact">
+
+            <h2>
+                Cảm ơn bạn đã ghé thăm!
+            </h2>
+
+            <p>
+                Đây là trang web giới thiệu bản thân của tôi.
+            </p>
+
+            <p>
+                Rất vui được làm quen và kết nối với mọi người.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- CHÂN TRANG -->
+    <footer>
+
+        <p>
+            Personal Introduction • 2026
+        </p>
+
+    </footer>
+
+
+</body>
+</html>
